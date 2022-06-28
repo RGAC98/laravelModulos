@@ -14,7 +14,13 @@ class modulosController extends Controller
      */
     public function index()
     {
-        $modulos = modulos::all();
+        //$modulos = modulos::all();
+
+        $modulos = modulos::select('mod_id', 'mod_nombre', 'mod_nom_corto', 'mod_descripcion', 'mod_desc_corta', 'mod_img', 'mod_url', 'mod_visitas', 'mod_orden', 'mod_estado')
+        ->where('mod_estado', '=', 'A')
+        ->orderBy('mod_id', 'ASC')
+        ->get();
+
         return response()->json(['modulos'=>$modulos, 'status'=>200]);
     }
 
@@ -35,18 +41,7 @@ class modulosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $modulo = new modulos();
-        $modulo->mod_nombre = $request->nombre;
-        $modulo->mod_img = $request->img;
-        $modulo->mod_descripcion = $request->descripcion;
-        $modulo->mod_url = $request->url;
-        $modulo->mod_visitas = $request->visitas;
-        $modulo->mod_orden = $request->orden;
-        $modulo->mod_estado = $request->estado;
-
-        $modulo->save();
-    }
+    {}
 
     /**
      * Display the specified resource.
@@ -55,11 +50,7 @@ class modulosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request)
-    {
-        $modulo = modulos::findOrFail($request->id);
-        error_log($modulo);
-        return $modulo;
-    }
+    {}
 
     /**
      * Show the form for editing the specified resource.
@@ -80,18 +71,7 @@ class modulosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
-    {
-        $modulo = modulos::findOrFail($request->id);
-        $modulo->mod_nombre = $request->nombre;
-        $modulo->mod_img = $request->img;
-        $modulo->mod_descripcion = $request->descripcion;
-        $modulo->mod_url = $request->url;
-        $modulo->mod_visitas = $request->visitas;
-        $modulo->mod_orden = $request->orden;
-        $modulo->mod_estado = $request->estado;
-
-        $modulo->save();
-    }
+    {}
 
     /**
      * Remove the specified resource from storage.
@@ -100,8 +80,5 @@ class modulosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request)
-    {
-        $modulo = modulos::destroy($request->id);
-        return $modulo;
-    }
+    {}
 }

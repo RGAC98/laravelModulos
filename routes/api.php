@@ -19,7 +19,3 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/modulos', 'App\Http\Controllers\modulosController@index');
-Route::get('/modulos/{id}', 'App\Http\Controllers\modulosController@show');
-Route::post('/modulos', 'App\Http\Controllers\modulosController@store');
-Route::put('/modulos', 'App\Http\Controllers\modulosController@update');
-Route::delete('/modulos', 'App\Http\Controllers\modulosController@destroy');
