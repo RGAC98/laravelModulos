@@ -16,7 +16,7 @@ class modulosController extends Controller
     {
         //$modulos = modulos::all();
 
-        $modulos = modulos::select('mod_id', 'mod_nombre', 'mod_nom_corto', 'mod_descripcion', 'mod_desc_corta', 'mod_img', 'mod_url', 'mod_visitas', 'mod_orden', 'mod_estado')
+        $modulos = modulos::select('mod_id', 'mod_nombre', 'mod_descripcion', 'mod_img', 'mod_url', 'mod_visitas', 'mod_orden', 'mod_estado')
         ->where('mod_estado', '=', 'A')
         ->orderBy('mod_id', 'ASC')
         ->get();
