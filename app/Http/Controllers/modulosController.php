@@ -70,8 +70,14 @@ class modulosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
-    {}
+    public function update($id)
+    {
+        $data = modulos::find($id);
+        $data->mod_visitas = $data->mod_visitas + 1;
+        $data->save();
+
+        return response()->json(['mensaje'=>'Visitas actualizadas', 'modulo'=>$id, 'status'=>200]);
+    }
 
     /**
      * Remove the specified resource from storage.
