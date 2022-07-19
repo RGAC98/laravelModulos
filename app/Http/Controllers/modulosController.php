@@ -18,7 +18,7 @@ class modulosController extends Controller
 
         $modulos = modulos::select('mod_id', 'mod_nombre', 'mod_descripcion', 'mod_img', 'mod_url', 'mod_visitas', 'mod_orden', 'mod_estado')
         ->where('mod_estado', '=', 'A')
-        ->orderBy('mod_id', 'ASC')
+        ->orderBy('mod_orden', 'ASC')
         ->get();
 
         return response()->json(['modulos'=>$modulos, 'status'=>200]);
