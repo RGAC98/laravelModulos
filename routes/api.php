@@ -20,3 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/modulos', 'App\Http\Controllers\modulosController@index');
 Route::put('/modulos/{id}', 'App\Http\Controllers\modulosController@update');
+
+Route::get('/consultas', 'App\Http\Controllers\consultasController@index');
